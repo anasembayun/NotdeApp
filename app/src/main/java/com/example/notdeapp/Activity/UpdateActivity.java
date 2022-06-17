@@ -22,7 +22,7 @@ public class UpdateActivity extends AppCompatActivity {
     private int xId;
     private String xJudul, xDes, xIsi;
     private EditText etJudul, etDes, etIsi;
-    private Button btnUpdate;
+    private Button btnUpdate, btnCancel;
     private String yJudul, yDes, yIsi;
 
     @Override
@@ -40,6 +40,7 @@ public class UpdateActivity extends AppCompatActivity {
         etDes = findViewById(R.id.et_des);
         etIsi = findViewById(R.id.et_isi);
         btnUpdate = findViewById(R.id.btn_update);
+        btnCancel  = findViewById(R.id.btn_cancel);
 
         etJudul.setText(xJudul);
         etDes.setText(xDes);
@@ -53,6 +54,13 @@ public class UpdateActivity extends AppCompatActivity {
                 yIsi = etIsi.getText().toString();
 
                 updateNote();
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(UpdateActivity.this, MainActivity.class));
             }
         });
     }

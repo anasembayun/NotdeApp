@@ -23,16 +23,23 @@
             android:textColor="@color/white"
             android:textSize="20dp"
             android:textStyle="bold" />
-
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="155dp"
+            android:background="#00FFFFFF"
+            android:text="Batal"
+            android:textColor="@color/white" />
         <Button
             android:id="@+id/btn_update"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/et_isi"
-            android:layout_marginStart="246dp"
             android:background="#00FFFFFF"
-            android:text="Update"
+            android:text="Ubah"
             android:textColor="@color/orange" />
+
+
     </LinearLayout>
 
 
@@ -76,6 +83,8 @@
         android:layout_marginEnd="16dp"
         android:gravity="start"
         android:hint="Isi"
+        android:lineSpacingExtra="12dp"
+        android:background="@drawable/bg_line"
         android:inputType="textMultiLine"
         android:singleLine="false"
         android:textColor="@color/white"

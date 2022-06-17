@@ -25,14 +25,22 @@
             android:textStyle="bold" />
 
         <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="155dp"
+            android:background="#00FFFFFF"
+            android:text="Batal"
+            android:textColor="@color/white" />
+
+        <Button
             android:id="@+id/btn_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/et_isi"
-            android:layout_marginStart="260dp"
             android:textColor="@color/orange"
             android:background="#00FFFFFF"
-            android:text="Save" />
+            android:text="Simpan" />
     </LinearLayout>
 
 
@@ -51,20 +59,20 @@
         android:layout_below="@+id/ll_notde"
         android:textSize="18dp"
         />
+
     <EditText
         android:id="@+id/et_des"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Deskripsi"
-        android:textColorHint="@color/white"
+        android:layout_below="@+id/et_judul"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:hint="Deskripsi"
+        android:inputType="text"
         android:maxLength="100"
         android:textColor="@color/white"
-        android:inputType="text"
-        android:layout_below="@+id/et_judul"
-        android:textSize="16dp"
-        />
+        android:textColorHint="@color/white"
+        android:textSize="16dp" />
 
     <EditText
         android:id="@+id/et_isi"
@@ -76,6 +84,8 @@
         android:layout_marginEnd="16dp"
         android:gravity="start"
         android:hint="Isi"
+        android:lineSpacingExtra="12dp"
+        android:background="@drawable/bg_line"
         android:inputType="textMultiLine"
         android:singleLine="false"
         android:textColor="@color/white"

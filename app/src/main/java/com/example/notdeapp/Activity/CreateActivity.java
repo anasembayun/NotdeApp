@@ -2,6 +2,7 @@ package com.example.notdeapp.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +20,7 @@ import retrofit2.Response;
 
 public class CreateActivity extends AppCompatActivity {
     private EditText etJudul, etDes, etIsi;
-    private Button btnSave;
+    private Button btnSave, btnCancel;
     private String judul, deskripsi, isi;
 
     @Override
@@ -31,6 +32,7 @@ public class CreateActivity extends AppCompatActivity {
         etDes = findViewById(R.id.et_des);
         etIsi = findViewById(R.id.et_isi);
         btnSave = findViewById(R.id.btn_save);
+        btnCancel = findViewById(R.id.btn_cancel);
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +42,13 @@ public class CreateActivity extends AppCompatActivity {
                 isi = etIsi.getText().toString();
 
                 createNote();
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(CreateActivity.this, MainActivity.class));
             }
         });
     }
