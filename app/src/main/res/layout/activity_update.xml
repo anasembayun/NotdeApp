@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_blue"
-    tools:context=".Activity.CreateActivity">
+    tools:context=".Activity.UpdateActivity">
 
     <LinearLayout
         android:id="@+id/ll_notde"
@@ -25,14 +25,14 @@
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/btn_save"
+            android:id="@+id/btn_update"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/et_isi"
-            android:layout_marginStart="260dp"
-            android:textColor="@color/orange"
+            android:layout_marginStart="246dp"
             android:background="#00FFFFFF"
-            android:text="Save" />
+            android:text="Update"
+            android:textColor="@color/orange" />
     </LinearLayout>
 
 
