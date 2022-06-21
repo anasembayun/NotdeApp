@@ -31,5 +31,4 @@ public class ResponseModel {
     private String message;
     private List<DataModel> data;
 
-
 }
