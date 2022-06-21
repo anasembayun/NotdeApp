@@ -8,6 +8,8 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface APIRequestData {
 
@@ -22,9 +24,22 @@ public interface APIRequestData {
             @Field("isi") String isi
     );
 
-    @FormUrlEncoded
     @DELETE("note_crud_api.php")
     Call<ResponseModel> deleteData(
-            @Field("id") int id
+            @Query("id") int id
+    );
+
+    @GET("note_crud_api.php")
+    Call<ResponseModel> getDataId(
+            @Query("id") int id
+    );
+
+    @FormUrlEncoded
+    @POST("note_crud_api.php")
+    Call<ResponseModel> updateData(
+            @Query("id") int id,
+            @Field("judul") String judul,
+            @Field("deskripsi") String deskripsi,
+            @Field("isi") String isi
     );
 }

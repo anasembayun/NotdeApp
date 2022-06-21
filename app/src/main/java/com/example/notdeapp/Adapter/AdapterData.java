@@ -21,6 +21,7 @@ import com.example.notdeapp.API.APIRequestData;
 import com.example.notdeapp.API.RetroServer;
 import com.example.notdeapp.Activity.CreateActivity;
 import com.example.notdeapp.Activity.MainActivity;
+import com.example.notdeapp.Activity.UpdateActivity;
 import com.example.notdeapp.Model.DataModel;
 import com.example.notdeapp.Model.ResponseModel;
 import com.example.notdeapp.R;
@@ -34,6 +35,7 @@ import retrofit2.Response;
 public class AdapterData extends RecyclerView.Adapter<AdapterData.AdapterHolder>{
     private Context context;
     private List<DataModel> listNote;
+    private List<DataModel> listNoteId;
     private int idNote;
 
 
@@ -81,7 +83,13 @@ public class AdapterData extends RecyclerView.Adapter<AdapterData.AdapterHolder>
             tvDate = itemView.findViewById(R.id.tv_date);
             ivIcon = itemView.findViewById(R.id.iv_icon);
 
-
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    idNote = Integer.parseInt(tvId.getText().toString());
+                    getNote();
+                }
+            });
 
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
@@ -112,12 +120,11 @@ public class AdapterData extends RecyclerView.Adapter<AdapterData.AdapterHolder>
                     dialogPesan.setNegativeButton("Batal", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-
+                            ((MainActivity) context).getDataNote();
                         }
                     });
 
                     dialogPesan.show();
-
                     return false;
                 }
             });
@@ -143,7 +150,43 @@ public class AdapterData extends RecyclerView.Adapter<AdapterData.AdapterHolder>
 
                 }
             });
+        }
+        
+        private void getNote(){
+            APIRequestData ardData = RetroServer.retrofitConnection().create(APIRequestData.class);
+            Call<ResponseModel> ambilData = ardData.getDataId(idNote);
+
+            ambilData.enqueue(new Callback<ResponseModel>() {
+                @Override
+                public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                    int status = response.body().getStatus();
+                    String message = response.body().getMessage();
+                    listNoteId = response.body().getData();
+
+                    int varId = listNoteId.get(0).getId();
+                    String varJudul = listNoteId.get(0).getJudul();
+                    String varDes = listNoteId.get(0).getDeskripsi();
+                    String varIsi = listNoteId.get(0).getIsi();
+
+
+
+                    Intent goSend = new Intent(context, UpdateActivity.class);
+                    goSend.putExtra("xId", varId);
+                    goSend.putExtra("xJudul", varJudul);
+                    goSend.putExtra("xDes", varDes);
+                    goSend.putExtra("xIsi", varIsi);
+                    context.startActivity(goSend);
+
+                }
+
+                @Override
+                public void onFailure(Call<ResponseModel> call, Throwable t) {
+                    Toast.makeText(context, "Gagal Menghubungi Server : " + t.getMessage(), Toast.LENGTH_SHORT).show();
+
+                }
+            });
 
         }
+
     }
 }

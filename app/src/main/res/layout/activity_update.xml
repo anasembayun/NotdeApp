@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark_blue"
-    tools:context=".Activity.CreateActivity">
+    tools:context=".Activity.UpdateActivity">
 
     <LinearLayout
         android:id="@+id/ll_notde"
@@ -23,7 +23,6 @@
             android:textColor="@color/white"
             android:textSize="20dp"
             android:textStyle="bold" />
-
         <Button
             android:id="@+id/btn_cancel"
             android:layout_width="wrap_content"
@@ -32,15 +31,15 @@
             android:background="#00FFFFFF"
             android:text="Batal"
             android:textColor="@color/white" />
-
         <Button
-            android:id="@+id/btn_save"
+            android:id="@+id/btn_update"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/et_isi"
-            android:textColor="@color/orange"
             android:background="#00FFFFFF"
-            android:text="Simpan" />
+            android:text="Ubah"
+            android:textColor="@color/orange" />
+
+
     </LinearLayout>
 
 
@@ -59,20 +58,20 @@
         android:layout_below="@+id/ll_notde"
         android:textSize="18dp"
         />
-
     <EditText
         android:id="@+id/et_des"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/et_judul"
+        android:hint="Deskripsi"
+        android:textColorHint="@color/white"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="Deskripsi"
-        android:inputType="text"
         android:maxLength="100"
         android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="16dp" />
+        android:inputType="text"
+        android:layout_below="@+id/et_judul"
+        android:textSize="16dp"
+        />
 
     <EditText
         android:id="@+id/et_isi"

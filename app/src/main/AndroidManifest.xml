@@ -20,6 +20,9 @@
             android:name=".Activity.SplashScreen"
             android:exported="false" />
         <activity
+            android:name=".Activity.UpdateActivity"
+            android:exported="true" />
+        <activity
             android:name=".Activity.CreateActivity"
             android:exported="true"
             android:parentActivityName=".Activity.MainActivity" />
