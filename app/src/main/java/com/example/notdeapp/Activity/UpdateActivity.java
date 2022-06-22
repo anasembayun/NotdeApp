@@ -70,6 +70,21 @@ public class UpdateActivity extends AppCompatActivity {
                 yDes = etDes.getText().toString();
                 yIsi = etIsi.getText().toString();
 
+                if(yJudul.trim().equals("")){
+                    btnUpdate.setEnabled(false);
+                }
+                else if(yDes.trim().equals("")){
+                    btnUpdate.setEnabled(false);
+                }
+                else if(yIsi.trim().equals("")){
+                    btnUpdate.setEnabled(false);
+                }
+                else{
+                    btnUpdate.setEnabled(true);
+                    updateNote();
+                    showNotification();
+                }
+
                 updateNote();
                 showNotification();
             }

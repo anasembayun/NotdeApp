@@ -61,15 +61,25 @@ public class CreateActivity extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                etJudul.addTextChangedListener(textWatcher);
-                etDes.addTextChangedListener(textWatcher);
-                etIsi.addTextChangedListener(textWatcher);
-//                judul = etJudul.getText().toString();
-//                deskripsi = etDes.getText().toString();
-//                isi = etIsi.getText().toString();
+                judul = etJudul.getText().toString();
+                deskripsi = etDes.getText().toString();
+                isi = etIsi.getText().toString();
 
-                createNote();
-                showNotification();
+                if(judul.trim().equals("")){
+                    btnSave.setEnabled(false);
+                }
+                else if(deskripsi.trim().equals("")){
+                    btnSave.setEnabled(false);
+                }
+                else if(isi.trim().equals("")){
+                    btnSave.setEnabled(false);
+                }
+                else{
+                    btnSave.setEnabled(true);
+                    createNote();
+                    showNotification();
+                }
+
             }
         });
 
@@ -118,25 +128,4 @@ public class CreateActivity extends AppCompatActivity {
         Notification notification = builder.build();
         mNotificationManager.notify(NOTIF_ID, notification);
     }
-
-    private TextWatcher textWatcher = new TextWatcher() {
-        @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            String title = etJudul.getText().toString().trim();
-            String desc = etDes.getText().toString().trim();
-            String ctn = etIsi.getText().toString().trim();
-            btnSave.setEnabled(!title.isEmpty() && !desc.isEmpty() && !ctn.isEmpty());
-        }
-
-        @Override
-        public void afterTextChanged(Editable editable) {
-
-        }
-    };
-
 }
