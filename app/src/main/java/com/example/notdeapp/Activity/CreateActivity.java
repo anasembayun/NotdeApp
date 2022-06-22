@@ -1,9 +1,18 @@
 package com.example.notdeapp.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,8 +20,10 @@ import android.widget.Toast;
 
 import com.example.notdeapp.API.APIRequestData;
 import com.example.notdeapp.API.RetroServer;
+import com.example.notdeapp.BuildConfig;
 import com.example.notdeapp.Model.ResponseModel;
 import com.example.notdeapp.R;
+import com.google.android.material.internal.TextWatcherAdapter;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,6 +33,10 @@ public class CreateActivity extends AppCompatActivity {
     private EditText etJudul, etDes, etIsi;
     private Button btnSave, btnCancel;
     private String judul, deskripsi, isi;
+
+    private NotificationManager mNotificationManager;
+    private final static  String CHANNEL_ID = "channel_id";
+    private final static int NOTIF_ID = 0 ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +49,27 @@ public class CreateActivity extends AppCompatActivity {
         btnSave = findViewById(R.id.btn_save);
         btnCancel = findViewById(R.id.btn_cancel);
 
+        mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel =  new NotificationChannel(CHANNEL_ID, "channel-name", NotificationManager.IMPORTANCE_HIGH);
+            mNotificationManager.createNotificationChannel(channel);
+        }
+
+
+
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                judul = etJudul.getText().toString();
-                deskripsi = etDes.getText().toString();
-                isi = etIsi.getText().toString();
+                etJudul.addTextChangedListener(textWatcher);
+                etDes.addTextChangedListener(textWatcher);
+                etIsi.addTextChangedListener(textWatcher);
+//                judul = etJudul.getText().toString();
+//                deskripsi = etDes.getText().toString();
+//                isi = etIsi.getText().toString();
 
                 createNote();
+                showNotification();
             }
         });
 
@@ -75,5 +103,40 @@ public class CreateActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void showNotification(){
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID);
+        builder.setContentTitle("Note baru ditambahkan!");
+        builder.setContentText("Klik untuk melihat");
+        builder.setSmallIcon(R.drawable.ic_notification);
+        builder.setPriority(NotificationCompat.PRIORITY_HIGH);
+
+        Intent contentIntent = new Intent(getApplicationContext(), MainActivity.class);
+        PendingIntent pendingContentIntent = PendingIntent.getActivity(getApplicationContext(), NOTIF_ID, contentIntent,PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(pendingContentIntent);
+
+        Notification notification = builder.build();
+        mNotificationManager.notify(NOTIF_ID, notification);
+    }
+
+    private TextWatcher textWatcher = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            String title = etJudul.getText().toString().trim();
+            String desc = etDes.getText().toString().trim();
+            String ctn = etIsi.getText().toString().trim();
+            btnSave.setEnabled(!title.isEmpty() && !desc.isEmpty() && !ctn.isEmpty());
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
 
 }

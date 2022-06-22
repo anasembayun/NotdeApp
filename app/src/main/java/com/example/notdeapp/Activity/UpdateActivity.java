@@ -1,8 +1,14 @@
 package com.example.notdeapp.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +31,10 @@ public class UpdateActivity extends AppCompatActivity {
     private Button btnUpdate, btnCancel;
     private String yJudul, yDes, yIsi;
 
+    private NotificationManager mNotificationManager;
+    private final static  String CHANNEL_ID = "channel_id";
+    private final static int NOTIF_ID = 0 ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +56,13 @@ public class UpdateActivity extends AppCompatActivity {
         etDes.setText(xDes);
         etIsi.setText(xIsi);
 
+        mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel =  new NotificationChannel(CHANNEL_ID, "channel-name", NotificationManager.IMPORTANCE_HIGH);
+            mNotificationManager.createNotificationChannel(channel);
+        }
+
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,6 +71,7 @@ public class UpdateActivity extends AppCompatActivity {
                 yIsi = etIsi.getText().toString();
 
                 updateNote();
+                showNotification();
             }
         });
 
@@ -86,6 +104,22 @@ public class UpdateActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void showNotification(){
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID);
+        builder.setContentTitle("Note berhasil diubah!");
+        builder.setContentText("Klik untuk melihat");
+        builder.setSmallIcon(R.drawable.ic_notification);
+        builder.setPriority(NotificationCompat.PRIORITY_HIGH);
+
+        Intent contentIntent = new Intent(getApplicationContext(), MainActivity.class);
+        PendingIntent pendingContentIntent = PendingIntent.getActivity(getApplicationContext(), NOTIF_ID, contentIntent,PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(pendingContentIntent);
+
+        Notification notification = builder.build();
+        mNotificationManager.notify(NOTIF_ID, notification);
 
     }
+
 }
