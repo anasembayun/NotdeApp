@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NotdeApp</string>
+    <string name="save">节省</string>
+    <string name="cancel">取消</string>
+    <string name="title">标题</string>
+    <string name="desc">描述</string>
+    <string name="content">内容</string>
+    <string name="update">改变</string>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NotdeApp</string>
+    <string name="save">Iligtas</string>
+    <string name="cancel">Kanselahin</string>
+    <string name="title">Pamagat</string>
+    <string name="desc">Paglalarawan</string>
+    <string name="content">nilalaman</string>
+    <string name="update">Update</string>
+</resources>

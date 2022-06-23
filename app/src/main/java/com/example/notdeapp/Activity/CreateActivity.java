@@ -8,6 +8,8 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -120,6 +122,10 @@ public class CreateActivity extends AppCompatActivity {
         builder.setContentText("Klik untuk melihat");
         builder.setSmallIcon(R.drawable.ic_notification);
         builder.setPriority(NotificationCompat.PRIORITY_HIGH);
+
+        Bitmap mascotBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.logo);
+        builder.setStyle(new NotificationCompat.BigPictureStyle().bigPicture(mascotBitmap).
+                setBigContentTitle("This notification has been update"));
 
         Intent contentIntent = new Intent(getApplicationContext(), MainActivity.class);
         PendingIntent pendingContentIntent = PendingIntent.getActivity(getApplicationContext(), NOTIF_ID, contentIntent,PendingIntent.FLAG_UPDATE_CURRENT);

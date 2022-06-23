@@ -29,14 +29,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="155dp"
             android:background="#00FFFFFF"
-            android:text="Batal"
+            android:text="@string/cancel"
             android:textColor="@color/white" />
         <Button
             android:id="@+id/btn_update"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#00FFFFFF"
-            android:text="Ubah"
+            android:text="@string/update"
             android:textColor="@color/orange" />
 
 
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:hint="Judul"
+        android:hint="@string/title"
         android:textColorHint="@color/white"
         android:maxLength="50"
         android:inputType="text"
@@ -62,7 +62,7 @@
         android:id="@+id/et_des"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Deskripsi"
+        android:hint="@string/desc"
         android:textColorHint="@color/white"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
@@ -82,7 +82,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="16dp"
         android:gravity="start"
-        android:hint="Isi"
+        android:hint="@string/content"
         android:lineSpacingExtra="12dp"
         android:background="@drawable/bg_line"
         android:inputType="textMultiLine"
