@@ -33,8 +33,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AdapterData extends RecyclerView.Adapter<AdapterData.AdapterHolder>{
-    private Context context;
-    private List<DataModel> listNote;
+    private final Context context;
+    private final List<DataModel> listNote;
     private List<DataModel> listNoteId;
     private int idNote;
 

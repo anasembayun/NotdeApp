@@ -3,6 +3,10 @@ package com.example.notdeapp.Model;
 import java.util.List;
 
 public class ResponseModel {
+    private int status;
+    private String message;
+    private List<DataModel> data;
+
     public int getStatus() {
         return status;
     }
@@ -27,8 +31,6 @@ public class ResponseModel {
         this.data = data;
     }
 
-    private int status;
-    private String message;
-    private List<DataModel> data;
+
 
 }
