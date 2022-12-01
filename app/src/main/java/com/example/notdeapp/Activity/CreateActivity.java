@@ -48,8 +48,6 @@ public class CreateActivity extends AppCompatActivity {
         etJudul = findViewById(R.id.et_judul);
         etDes = findViewById(R.id.et_des);
         etIsi = findViewById(R.id.et_isi);
-        btnSave = findViewById(R.id.btn_save);
-
 
         mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
@@ -57,7 +55,12 @@ public class CreateActivity extends AppCompatActivity {
             NotificationChannel channel =  new NotificationChannel(CHANNEL_ID, "channel-name", NotificationManager.IMPORTANCE_HIGH);
             mNotificationManager.createNotificationChannel(channel);
         }
+        btnSave();
+        btnCancel();
+    }
 
+    public void btnSave(){
+        btnSave = findViewById(R.id.btn_save);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,8 +84,6 @@ public class CreateActivity extends AppCompatActivity {
                 }
             }
         });
-
-        btnCancel();
     }
 
     public void btnCancel(){
