@@ -55,7 +55,6 @@ public class UpdateActivity extends AppCompatActivity {
         etJudul.setText(xJudul);
         etDes.setText(xDes);
         etIsi.setText(xIsi);
-        etIsi.setText(xIsi);
 
         mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
@@ -87,7 +86,6 @@ public class UpdateActivity extends AppCompatActivity {
                 }
 
                 updateNote();
-                showNotification();
                 showNotification();
             }
         });
@@ -139,20 +137,6 @@ public class UpdateActivity extends AppCompatActivity {
 
     }
 
-    public void showNotifications(){
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID);
-        builder.setContentTitle("Note berhasil diubah!");
-        builder.setContentText("Klik untuk melihat");
-        builder.setSmallIcon(R.drawable.ic_notification);
-        builder.setPriority(NotificationCompat.PRIORITY_HIGH);
 
-        Intent contentIntent = new Intent(getApplicationContext(), MainActivity.class);
-        PendingIntent pendingContentIntent = PendingIntent.getActivity(getApplicationContext(), NOTIF_ID, contentIntent,PendingIntent.FLAG_UPDATE_CURRENT);
-        builder.setContentIntent(pendingContentIntent);
-
-        Notification notification = builder.build();
-        mNotificationManager.notify(NOTIF_ID, notification);
-
-    }
 
 }
