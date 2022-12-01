@@ -91,6 +91,13 @@ public class CreateActivity extends AppCompatActivity {
                 startActivity(new Intent(CreateActivity.this, MainActivity.class));
             }
         });
+
+//        btnCancel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(CreateActivity.this, MainActivity.class));
+//            }
+//        });
     }
 
     public void createNote(){
@@ -134,4 +141,6 @@ public class CreateActivity extends AppCompatActivity {
         Notification notification = builder.build();
         mNotificationManager.notify(NOTIF_ID, notification);
     }
+
+
 }
