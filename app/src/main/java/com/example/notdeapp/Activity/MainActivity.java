@@ -34,6 +34,7 @@ import retrofit2.Response;
      private SwipeRefreshLayout srlData;
      private ProgressBar pbData;
      private FloatingActionButton fabAdd;
+     private String title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +62,7 @@ import retrofit2.Response;
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, CreateActivity.class));
                 startActivity(new Intent(MainActivity.this, CreateActivity.class));
             }
         });
