@@ -34,7 +34,6 @@ import retrofit2.Response;
      private SwipeRefreshLayout srlData;
      private ProgressBar pbData;
      private FloatingActionButton fabAdd;
-     private String title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -49,8 +49,6 @@ public class CreateActivity extends AppCompatActivity {
         etJudul = findViewById(R.id.et_judul);
         etDes = findViewById(R.id.et_des);
         etIsi = findViewById(R.id.et_isi);
-        btnSave = findViewById(R.id.btn_save);
-        btnCancel = findViewById(R.id.btn_cancel);
 
         mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
@@ -59,8 +57,13 @@ public class CreateActivity extends AppCompatActivity {
             mNotificationManager.createNotificationChannel(channel);
         }
 
+        btnSave();
+        btnCancel();
 
+    }
 
+    public  void btnSave(){
+        btnSave = findViewById(R.id.btn_save);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,7 +88,10 @@ public class CreateActivity extends AppCompatActivity {
 
             }
         });
+    }
 
+    public void btnCancel(){
+        btnCancel = findViewById(R.id.btn_cancel);
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,12 +99,6 @@ public class CreateActivity extends AppCompatActivity {
             }
         });
 
-//        btnCancel.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(CreateActivity.this, MainActivity.class));
-//            }
-//        });
     }
 
     public void createNote(){
