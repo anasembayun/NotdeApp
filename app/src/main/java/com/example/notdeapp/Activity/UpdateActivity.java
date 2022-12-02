@@ -96,6 +96,13 @@ public class UpdateActivity extends AppCompatActivity {
                 startActivity(new Intent(UpdateActivity.this, MainActivity.class));
             }
         });
+
+//        btnCancel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(UpdateActivity.this, MainActivity.class));
+//            }
+//        });
     }
 
     private void updateNote(){
@@ -118,6 +125,12 @@ public class UpdateActivity extends AppCompatActivity {
                 Toast.makeText(UpdateActivity.this, "Gagal Menghubungi Server : "+t.getMessage(), Toast.LENGTH_SHORT).show();
 
             }
+
+//            @Override
+//            public void onFailure(Call<ResponseModel> call, Throwable t) {
+//                Toast.makeText(UpdateActivity.this, "Gagal Menghubungi Server : "+t.getMessage(), Toast.LENGTH_SHORT).show();
+//
+//            }
         });
     }
 
