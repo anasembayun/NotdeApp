@@ -35,6 +35,7 @@ public class CreateActivity extends AppCompatActivity {
     private EditText etJudul, etDes, etIsi;
     private Button btnSave, btnCancel;
     private String judul, deskripsi, isi;
+    private String title;
 
     private NotificationManager mNotificationManager;
     private final static  String CHANNEL_ID = "channel_id";
@@ -94,6 +95,13 @@ public class CreateActivity extends AppCompatActivity {
                 startActivity(new Intent(CreateActivity.this, MainActivity.class));
             }
         });
+
+//        btnCancel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(CreateActivity.this, MainActivity.class));
+//            }
+//        });
     }
 
     public void createNote(){
